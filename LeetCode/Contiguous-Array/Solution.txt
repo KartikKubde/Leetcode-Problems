@@ -1,0 +1,30 @@
+1class Solution:
+2    def findMaxLength(self, nums: List[int]) -> int:
+3        n = len(nums)
+4        zero = 0
+5        one = 0
+6        
+7        mp = {}   # diff -> first index
+8        res = 0
+9        
+10        for i in range(n):
+11            if nums[i] == 0:
+12                zero += 1
+13            else:
+14                one += 1
+15            
+16            diff = zero - one
+17            
+18            if diff == 0:
+19                res = max(res, i + 1)
+20                continue
+21
+22            if diff not in mp:
+23                mp[diff] = i
+24            else:
+25                idx = mp[diff]
+26                length = i - idx
+27                res = max(res,length)
+28
+29        return res
+30            
