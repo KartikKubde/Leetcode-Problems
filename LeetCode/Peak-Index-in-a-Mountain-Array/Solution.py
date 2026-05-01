@@ -1,18 +1,22 @@
-1class Solution:
-2    def peakIndexInMountainArray(self, arr: List[int]) -> int:
-3        
-4        low = 0 
-5        high = len(arr) - 1
-6        res = -1
-7
-8        while(low <= high):
-9            guess = (high + low) // 2
-10
-11            if(arr[guess] < arr[guess+1]):
-12                low = guess + 1
-13
-14            else:
-15                res = guess
-16                high = guess - 1
-17
-18        return res
+1class Solution {
+2public:
+3    int peakIndexInMountainArray(vector<int>& arr) {
+4       int s=0;
+5       int e=arr.size() - 1;
+6
+7       int mid=s+(e-s)/2;
+8
+9       while(s<e){
+10        if (arr[mid]<arr[mid+1]){
+11            s=mid+1;
+12        }
+13        else{
+14            e=mid;
+15        }
+16        mid=s+(e-s)/2;
+17       }
+18       return s;
+19
+20
+21    }
+22};
