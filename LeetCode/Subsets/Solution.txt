@@ -1,0 +1,26 @@
+1class Solution:
+2
+3    def func(self,nums,n,idx,diary,ans):
+4
+5        if(idx == n):
+6            ans.append(list(diary))
+7            return
+8
+9        # Yes
+10        diary.append(nums[idx])
+11        self.func(nums,n,idx+1,diary,ans)
+12        diary.pop()
+13
+14        #No
+15        self.func(nums,n,idx+1,diary,ans)
+16
+17        return
+18
+19    def subsets(self, nums: List[int]) -> List[List[int]]:
+20        n = len(nums)
+21        idx = 0
+22        diary = []
+23        ans  = []
+24
+25        self.func(nums,n,idx,diary,ans)
+26        return ans
