@@ -6,14 +6,16 @@
 6
 7class Solution:
 8    def hasCycle(self, head: Optional[ListNode]) -> bool:
-9        temp = head 
-10        my_set = set()  # sc O(n)
-11
-12        while temp is not None:
-13            if temp in my_set:   # tc O(1)
-14                return True
-15            my_set.add(temp)   # tc O(1)
-16            temp = temp.next
-17
-18        return False
+9        slow = head 
+10        fast = head 
+11        
+12        while fast is not None and fast.next is not None:
+13            slow = slow.next
+14            fast = fast.next.next
+15            
+16            if(slow == fast):
+17                return True
+18            
 19
+20        return False
+21
